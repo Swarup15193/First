@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Welcome to the Index Page!The Page Is currently Under Development So dont mind.;d</h1>
+    <div id="display-name"></div>
+
+    <script>
+        // Function to fetch the name from info.html
+        async function fetchName() {
+            const response = await fetch('info.html');
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const name = doc.getElementById('name').innerText;
+            document.getElementById('display-name').innerText = `The name is: ${name}`;
+        }
+
+        fetchName();
+    </script>
+</body>
+</html>
